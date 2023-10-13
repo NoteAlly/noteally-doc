@@ -6,6 +6,8 @@ on:
       - main
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
+    paths:
+      - 'noteally-doc/notally-doc/**'
 
 permissions:
   contents: write
@@ -16,16 +18,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          working-directory: ./notally-doc
       - uses: actions/setup-node@v3
         with:
+          working-directory: ./notally-doc
           node-version: 18
           cache: yarn
 
       - name: Install dependencies
-        working-directory: ./noteally-doc
+        working-directory: ./notally-doc
         run: yarn install --frozen-lockfile
       - name: Build website
-        working-directory: ./noteally-doc
+        working-directory: ./notally-doc
         run: yarn build
 
       # Popular action to deploy to GitHub Pages:
@@ -33,6 +38,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
+          working-directory: ./notally-doc
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages` branch:
           publish_dir: ./build
