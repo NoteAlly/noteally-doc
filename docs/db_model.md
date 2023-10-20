@@ -9,6 +9,7 @@ The database model is composed of the following tables:
 - User
 - Material
 - StudyArea
+- University
 - Like
 - Download
 
@@ -24,6 +25,9 @@ The material entity is a resource that a user can create and share with other us
 
 ## StudyArea
 The study area entity is used to categorize materials. A material can belong to one or more study areas. This will help users to find materials that are related to their study area, and will help the system to recommend materials to new users.
+
+## University
+The university entity is used to categorize materials. A material can belong to only one. This will help users to find materials that are related to their university, and will help the system to recommend materials to new users.
 
 ## Like
 The like entity is used to keep track of the number of likes, and dislikes of a material. This will help users to know if a material is useful or not.
