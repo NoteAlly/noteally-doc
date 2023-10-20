@@ -6,8 +6,6 @@ on:
       - main
     # Review gh actions docs if you want to further define triggers, paths, etc
     # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
-    paths:
-      - 'notally-doc/**'
 
 permissions:
   contents: write
@@ -15,8 +13,6 @@ permissions:
 jobs:
   deploy:
     defaults:
-      run:
-        working-directory: ./notally-doc
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
@@ -25,13 +21,11 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-          cache-dependency-path: notally-doc/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ./notally-doc
         run: yarn install --frozen-lockfile
       - name: Build website
-        working-directory: ./notally-doc
         run: yarn build
 
       # Popular action to deploy to GitHub Pages:
@@ -41,7 +35,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./notally-doc/build
+          publish_dir: ./build
           # The following lines assign commit authorship to the official
           # GH-Actions bot for deploys to `gh-pages` branch:
           # https://github.com/actions/checkout/issues/13#issuecomment-724415212
