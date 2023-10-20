@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   deploy:
-    defaults:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
