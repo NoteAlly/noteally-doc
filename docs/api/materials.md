@@ -6,7 +6,44 @@ The endpoint `/materials` is used to create, list, update, and delete materials,
 
 
 ## Create a material
-TODO
+
+To create a material, you need to send a `POST` request to the endpoint `/materials` with the following body, as exampled below:
+
+```json
+POST /materials
+
+{
+    "user": 1,
+    "name": "Introduction to Programming",
+    "description": "Introduction to Programming",
+    "price": 0,
+    "university": 1,
+    "file": *File,
+    "study_areas": [1, 2]
+
+}
+
+*File is a file object, which can be something like an image, pdf, text file, etc. not a string.
+```
+
+The response will look like something similar to this:
+
+```json
+{
+    "Success": "Successfully Created",
+    "created_id": 1
+}
+```
+
+If the material was successfully created, or like this:
+
+```json
+{
+    "error": "Error Message"
+}
+```
+
+If the material was not successfully created.
 
 
 ## List materials
@@ -110,6 +147,7 @@ Your response will look like something similar to this:
 ### Pagination
 
 The first six attributes are related to pagination, and their meaning is as follows:
+
 - `next`: the URL of the next page of results. If there is no next page, this attribute is `null`;
 - `previous`: the URL of the previous page of results. If there is no previous page, this attribute is `null`;
 - `current_page`: the number of the current page;
@@ -169,8 +207,9 @@ GET /materials?order_by=-price
 ```
 
 ## Update a material
+
 TODO
 
-
 ## Delete a material
+
 TODO
