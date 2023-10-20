@@ -18,10 +18,12 @@ POST /materials
     "description": "Introduction to Programming",
     "price": 0,
     "university": 1,
-    "file": "https://noteally.s3.eu-west-3.amazonaws.com/introduction_to_programming.pdf",
+    "file": *File,
     "study_areas": [1, 2]
 
 }
+
+*File is a file object, which can be something like an image, pdf, text file, etc. not a string.
 ```
 
 The response will look like something similar to this:
