@@ -206,6 +206,65 @@ For instance, if you want to order the materials by price from highest to lowest
 GET /materials?order_by=-price
 ```
 
+## Get a material
+
+To get a material, you need to send a `GET` request to the endpoint `/materials/{id}`, where `{id}` is the ID of the material you want to get. For example, if you want to get the material with ID 1, you can do so by sending a `GET` request to the endpoint `/materials/1`:
+
+```http
+GET /materials/1
+```
+
+The response will look like something similar to this:
+
+```json
+{
+    "id": 1,
+    "upload_date": "21/10/2023 22:41:57",
+    "name": "Introduction to Programming",
+    "description": "Introduction to Programming",
+    "price": 0.0,
+    "file_name": "introduction_to_programming.pdf",
+    "file": "/https%3A/noteally.s3.eu-west-3.amazonaws.com/introduction_to_programming.pdf",
+    "total_likes": 0,
+    "total_dislikes": 0,
+    "total_downloads": 0,
+    "user": {
+        "id": 1,
+        "name": "John",
+        "email": "john@ua.pt",
+        "karma_score": 0,
+        "description": "I'm a student at the University of Aveiro.",
+        "tutoring_services": true,
+        "profile_picture_link": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
+        "university": {
+            "id": 1,
+            "name": "University of Aveiro"
+        },
+        "study_areas": [
+            {
+                "id": 1,
+                "name": "Computer Science"
+            }
+        ]
+    },
+    "university": {
+        "id": 1,
+        "name": "University of Aveiro"
+    },
+    "study_areas": []
+}
+```
+
+If the material was found, or like this:
+
+```json
+{
+    "error": "Material does not exist"
+}
+```
+
+If the material does not exist.
+
 ## Update a material
 
 TODO
