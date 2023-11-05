@@ -1,6 +1,6 @@
 {
   "label": "API",
-  "position": 6,
+  "position": 7,
   "link": {
     "type": "generated-index",
     "description": "This section lists and describes all the endpoints that compound the NoteAlly API, including request examples and responses."
