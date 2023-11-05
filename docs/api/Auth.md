@@ -1,78 +1,57 @@
 # Auth
 
+In order to use most of the resources provided by the API, you need to be authenticated. To do so, you need to register an account and then login.
+
+To facilitate and simplify the authentication process, the API is secured using AWS Cognito along with AWS API Gateway. This means that the API does not store any user credentials, and the authentication is entirely handled by AWS.
 
 
-## Register
+## Login and Register
 
-To create an account, you need to send a `POST` request to the endpoint `/register` with the following body, as exampled below:
+To login or register, you just need to send a `POST` request to the following endpoint.
 
-```json
-POST /register
-
-{
-    "name": "Teles",
-    "description": "Hello Im Teles",
-    "email": "teles@ua.pt",
-    "university": 1,
-    "tutoring_services": true,
-    "password": "secret",
-    "id_aws":0
-
-}
- 
+```http
+POST /login
 ```
 
-The response will look like something similar to this:
+You need to pass as multipart form data the following fields:
 
 ```json
 {
-    "Success": "Successfully Registered"
+    "id_token": "...",
+    "access_token": "..."
 }
 ```
 
-If the account was successfully created, or like this:
+where `id_token` and `access_token` are the tokens provided by AWS Cognito after a successful login or registration.
+
+Internally, the API will use the `access_token` to get the user's general information from AWS Cognito. If the user does not exist in the database, it will be created.
+
+After a successful login or registration, the API will return a `200` status code along with the following response:
 
 ```json
 {
-    "error": "Error Message"
+    "id": 1,
+    "sub": "<cognito-sub>",
+    "id_token": "...",
+    "first_name": "<first-name>",
+    "last_name": "<last-name>",
+    "email": "<email>",
+    "premium": false,
+    "karma_score": 0,
+    "tutoring_services": false,
+    "profile_picture": null,
+    "registered": "False if the user was just registered, True otherwise"
 }
 ```
 
-If the account was not successfully created.
+
+:::tip Note
+
+This information is useful to use as session data in the frontend.
+
+:::
 
 
-## Login
+## Accessing private resources
 
-To Login, you need to send a `POST` request to the endpoint `/login` with the following body, as exampled below:
-
-```json
-POST /materials
-
-{
-    "email": "teles@ua.pt",
-    "password": "secret", 
-
-}
- 
-```
-
-The response will look like something similar to this:
-
-```json
-{
-    "Success": "Successfully Logged",
-    "created_id": 1
-}
-```
-
-If the login was successfull, or like this:
-
-```json
-{
-    "error": "Error Message"
-}
-```
-
-If the login was not successfull.
-
- 
+To access protected resources, you need to send the `id_token` in the header of the request using the key `Authorization`. The AWS API Gateway will validate the token and forward the request to the API if the token is valid.
