@@ -72,55 +72,21 @@ Your response will look like something similar to this:
             "price": 0.0,
             "upload_date": "2023-10-20T13:18:26.068535Z",
             "file_name": "introduction_to_programming.pdf",
-            "file": "/https%3A/noteally.s3.eu-west-3.amazonaws.com/introduction_to_programming.pdf",
+            "file_size": 1234,
             "total_likes": 0,
             "total_dislikes": 0,
             "total_downloads": 0,
             "user": {
                 "id": 1,
-                "id_aws": 1,
-                "name": "John",
+                "sub": "058feb08-7baf-4a6c-8428-26544018ww9f",
+                "first_name": "John",
+                "last_name": "Doe",
                 "email": "john@ua.pt",
                 "premium": true,
                 "karma_score": 0,
                 "description": "I'm a student at the University of Aveiro.",
                 "tutoring_services": true,
-                "profile_picture_name": "john.jpg",
-                "profile_picture_link": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
-                "university": 1,
-                "study_areas": [
-                    1
-                ]
-            },
-            "university": {
-                "id": 1,
-                "name": "University of Aveiro"
-            },
-            "study_areas": []
-        },
-        {
-            "id": 2,
-            "name": "Material 1",
-            "description": "Material 1 para efeitos de teste",
-            "price": 2.0,
-            "upload_date": "2023-10-20T13:55:59.314569Z",
-            "file_name": "fake.pdf",
-            "file": null,
-            "total_likes": 0,
-            "total_dislikes": 0,
-            "total_downloads": 0,
-            "user": {
-                "id": 1,
-                "id_aws": 1,
-                "name": "John",
-                "email": "john@ua.pt",
-                "premium": true,
-                "karma_score": 0,
-                "description": "I'm a student at the University of Aveiro.",
-                "tutoring_services": true,
-                "profile_picture_name": "john.jpg",
-                "profile_picture_link": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
-                "university": 1,
+                "profile_picture": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
                 "study_areas": [
                     1
                 ]
@@ -133,12 +99,11 @@ Your response will look like something similar to this:
                 {
                     "id": 1,
                     "name": "Computer Science"
-                },
-                {
-                    "id": 2,
-                    "name": "Mathematics"
                 }
             ]
+        },
+        {
+            ...
         }
     ]
 }
@@ -170,7 +135,7 @@ If you desire to filter the materials, you can do so by using the following quer
 
 | Parameter    | Description |
 | -------- | ------- |
-| `title`  | Filter for materials that contain `title` in their name. |
+| `name`  | Filter for materials that contain `name` in their name. |
 | `author` | Filter for materials that were uploaded by `author`. |
 | `study_area` | Filter for materials that belong to the study area with `study_area` as its ID. |
 | `university` | Filter for materials that belong to the university with `university` as its ID. |
@@ -224,22 +189,21 @@ The response will look like something similar to this:
     "description": "Introduction to Programming",
     "price": 0.0,
     "file_name": "introduction_to_programming.pdf",
-    "file": "/https%3A/noteally.s3.eu-west-3.amazonaws.com/introduction_to_programming.pdf",
+    "file_size": 1234,
     "total_likes": 0,
     "total_dislikes": 0,
     "total_downloads": 0,
     "user": {
         "id": 1,
-        "name": "John",
+        "sub": "058feb08-7baf-4a6c-8428-26544018ww9f",
+        "first_name": "John",
+        "last_name": "Doe",
         "email": "john@ua.pt",
+        "premium": true,
         "karma_score": 0,
         "description": "I'm a student at the University of Aveiro.",
         "tutoring_services": true,
-        "profile_picture_link": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
-        "university": {
-            "id": 1,
-            "name": "University of Aveiro"
-        },
+        "profile_picture": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
         "study_areas": [
             {
                 "id": 1,
@@ -251,11 +215,16 @@ The response will look like something similar to this:
         "id": 1,
         "name": "University of Aveiro"
     },
-    "study_areas": []
+    "study_areas": [
+        {
+            "id": 1,
+            "name": "Computer Science"
+        }
+    ]
 }
 ```
 
-If the material was found, or like this:
+If the material was not found, the response will be:
 
 ```json
 {
