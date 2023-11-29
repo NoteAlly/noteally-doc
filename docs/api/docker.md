@@ -17,7 +17,7 @@ sudo usermod -aG docker <computer-name>
 
 ## Getting Docker Image
 
-The Docker image of the project API and the implementation files can be found at the github repository [docker-images]("https://github.com/NoteAlly/noteally-backend"). The image is automatically built and pushed to the repository when a new commit is pushed to the `main` branch.
+The Docker image of the project API and the implementation files can be found at the github repository [docker-images](https://github.com/NoteAlly/noteally-backend). The image is automatically built and pushed to the repository when a new commit is pushed to the `main` branch.
 
 There are two ways of getting the image:
 
