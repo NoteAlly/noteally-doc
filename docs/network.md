@@ -37,10 +37,14 @@ Our network consists of one VPC with one public subnet and one private subnet, o
 
 - Route tables are used to define the routes for the subnets. They are used to define the routes to the internet gateway, NAT gateway, and other resources inside the VPC.
 
-## API Gateway
+## Network Load Balancer
 
-- API Gateway is used to expose the API to the internet. It is used to define the API endpoints, and the resources that are available on each endpoint. It is also used to define the authentication and authorization methods for the API. This way we can keep our API private, and only allow authorized users to access it.
+- Network Load Balancer is used to distribute the load between the instances of the API. It is used to make sure that the API is always available, and to make sure that the API can handle the load.
 
-<!-- ## ACL
+## VPC Link
 
-- ACLs are used to control the traffic that is allowed to enter or leave the subnets. They are used to allow or deny traffic based on the IP address, port, or protocol. In our case we will block all traffic from protocols other than HTTP and HTTPS. Since we do not need to allow any other traffic. -->
+- VPC Link is used to connect the API Gateway to the VPC. It is used to allow the API Gateway to access the resources inside the VPC and to define that the vpc is only accessible it.
+
+## Security Groups
+
+- Security groups are used to define the inbound and outbound rules for the resources. They are used to define which ports are open, and which ports are closed. They are also used to define which resources can access the resources, and which resources cannot access the resources.
