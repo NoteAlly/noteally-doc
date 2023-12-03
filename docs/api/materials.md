@@ -233,11 +233,3 @@ If the material was not found, the response will be:
 ```
 
 If the material does not exist.
-
-## Update a material
-
-TODO
-
-## Delete a material
-
-TODO
