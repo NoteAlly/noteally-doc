@@ -11,9 +11,8 @@ NoteAlly is a web-based platform designed to cater to the needs of university st
 - Organized university resources with tags
 - Option to monetize resources and tutoring services
 - User ranking system with ‘Karma’ Score
-- Resources recommendation system
-- Premium features like increased resources visibility
-- Customer Support
+- Resources filterting 
+- Premium features like increased resources ad omission
 
 ## Non-Functional Requirements
 
