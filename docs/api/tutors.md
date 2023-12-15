@@ -142,4 +142,144 @@ If the tutor was not found, the response will be:
 
 If the tutor does not exist.
 
+
+## Subscribe
+
+To subscribe to a tutor, you need to send a `POST` request to the endpoint
+
+```http
+POST /subscribe/<int:to_sub_user_id>
+```
+
+The request needs to contain the following headers:
+
+```json
+{
+    "User-id": <own_user_id>,
+}
+```
+
+If the request is successful, the response will return a `200` status code along with the following message:
+
+```json
+{
+    'message': 'Successfully subscribed'
+}
+```
+
+If the request is not successful, there will be an error message with status code `400`. The error message will be one of the following:
+
+```json
+{
+    "error": "User not found"
+}
+```
+
+```json
+{
+    "error": "Already following this user"
+}
+``` 
+
+### Notifications
+
+Whenever a user follows another, the user will start receiving notifications on any resource published by the user to follow. This is possible with the use of Amazon SNS. 
+
+#### Each user is associated with a topic created dynamically using the boto3 client 
+
+![](/website/notifications/topics.png)
+
+#### Whenever the user to follow publishes a resource, the subscriber to its topic will receive a notification
+
+![](/website/notifications/notification.png)
+
+
+## Unsubscribe
+
+To unsubscribe to a tutor, you need to send a `POST` request to the endpoint
+
+```http
+POST /subscribe/<int:to_unsub_user_id>
+```
+
+The request needs to contain the following headers:
+
+```json
+{
+    "User-id": <own_user_id>,
+}
+```
+
+If the request is successful, the response will return a `200` status code along with the following message:
+
+```json
+{
+    'message': 'Successfully unsubscribed'
+}
+```
+
+If the request is not successful, there will be an error message with status code `400`. The error message will be one of the following:
+
+```json
+{
+    "error": "User not found"
+}
+```
+
+```json
+{
+    "error": "Not currently subscribed to this user"
+}
+``` 
+
+## List Subscription
+
+To simply list all tutors subscription, you just need to send a `GET` request to the endpoint:
+
+```http
+GET /get_subscriptions
+```
+The request needs to contain the following headers:
+
+```json
+{
+    "User-id": <own_user_id>,
+}
+```
+
+Your response will look like something similar to this:
+
+```json
+{
+    "next": null,
+    "previous": null,
+    "current_page": 1,
+    "total_pages": 1,
+    "total_elements": 1,
+    "this_page_elements": 1,
+    "results": [
+        {
+            "id": 1,
+            "sub": "058feb08-7baf-4a6c-8428-26544018ww9f",
+            "first_name": "John",
+            "last_name": "Doe",
+            "email": "john@ua.pt",
+            "premium": true,
+            "karma_score": 0,
+            "description": "I'm a student at the University of Aveiro.",
+            "tutoring_services": true,
+            "profile_picture": "https://noteally.s3.eu-west-3.amazonaws.com/john.jpg",
+            "study_areas": [
+                {
+                    "id": 1,
+                    "name": "Computer Science"
+                }
+            ]
+        }
+        {
+            ...
+        }
+    ]
+}
+```
  
