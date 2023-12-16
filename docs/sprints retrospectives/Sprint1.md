@@ -1,3 +1,5 @@
+# Sprint 1
+
 - **What went well:**
     - Met all sprint goals.
     - Team did well when jumpstarting the project. 
