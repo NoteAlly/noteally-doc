@@ -5,31 +5,28 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/easy_to_use.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Our platform ensures an user-friendly and easy-to-use experience, making note-sharing and sales effortlessly accessible for all users.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Ranked Notes',
+    Svg: require('@site/static/img/ranked_notes.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Elevate your learning with our platform's Ranked Notes – a user-friendly experience that brings top-quality study materials to your fingertips effortlessly.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Profit with your effort',
+    Svg: require('@site/static/img/profit.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Empower your academic journey and profit with your effort on our platform, where sharing and selling study materials is effortlessly rewarding.
       </>
     ),
   },
