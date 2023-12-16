@@ -4,7 +4,7 @@ Users that have published at least one post have the possibility to see their po
 
 ## Get user posts
 
-In order to get the posts of a user, a `GET` request must be sent to the `/posts` endpoint. In addition to the `Authorization` header, the `User-id` header must be sent with the request. The `User-id` header must contain the user's id.
+In order to get the posts of a user, a `GET` request must be sent to the `/tutors/posts` endpoint. In addition to the `Authorization` header, the `User-id` header must be sent with the request. The `User-id` header must contain the user's id.
 
 ```http
 GET /posts
@@ -57,16 +57,16 @@ After performing the get request to this endpoint, the response follows the foll
 ]
 ```
 
-Alternatively, to retrieve posts from a specific tutor, you can send a GET request to the endpoint /tutorposts/{id}, where {id} represents the user ID of the desired tutor. For instance, if you wish to obtain posts from the user with ID 1, you can do so by sending a GET request to the endpoint /tutorposts/1.
+Alternatively, to retrieve posts from a specific tutor, you can send a GET request to the endpoint /tutors/tutorposts/{id}, where {id} represents the user ID of the desired tutor. For instance, if you wish to obtain posts from the user with ID 1, you can do so by sending a GET request to the endpoint /tutors/tutorposts/1.
 
 ```http
-GET /tutorposts/{user_id}
+GET /tutors/tutorposts/{user_id}
 ```
 
 ## Delete a post
 
-In order to delete a post, a `DELETE` request must be sent to the `/posts/{id}` endpoint.
+In order to delete a post, a `DELETE` request must be sent to the `/tutors/posts/{id}` endpoint.
 
 ```http
-DELETE /posts/{id}
+DELETE /tutors/posts/{id}
 ```

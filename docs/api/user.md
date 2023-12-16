@@ -5,7 +5,7 @@
 To unlock the premium features of the application, you need to send a `POST` request to the endpoint
 
 ```http
-POST /unlock-premium/
+POST /users/unlock-premium/
 ```
 
 The request needs to contain the following headers:

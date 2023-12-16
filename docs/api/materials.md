@@ -2,7 +2,7 @@
 
 A material is a resource that users can upload and share with each other. A material can be a file, a link, or a text entry.
 
-The endpoint `/materials` is used to create, list, update, and delete materials, using the HTTP methods `POST`, `GET`, `PUT`, and `DELETE` respectively.
+The endpoint `/materials` is used to create, list, and delete materials, using the HTTP methods `POST`, `GET`, and `DELETE` respectively.
 
 
 ## Create a material

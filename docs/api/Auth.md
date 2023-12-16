@@ -2,7 +2,7 @@
 
 In order to use most of the resources provided by the API, you need to be authenticated. To do so, you need to register an account and then login.
 
-To facilitate and simplify the authentication process, the API is secured using AWS Cognito along with AWS API Gateway. This means that the API does not store any user credentials, and the authentication is entirely handled by AWS.
+To facilitate and simplify the authentication process, the API is secured using AWS Cognito. This means that the API does not store any user credentials, and the authentication is entirely handled by AWS.
 
 
 ## Login and Register
@@ -10,7 +10,7 @@ To facilitate and simplify the authentication process, the API is secured using 
 To login or register, you just need to send a `POST` request to the following endpoint.
 
 ```http
-POST /login
+POST /auth/login
 ```
 
 You need to pass as multipart form data the following fields:
@@ -54,4 +54,4 @@ This information is useful to use as session data in the frontend.
 
 ## Accessing private resources
 
-To access protected resources, you need to send the `id_token` in the header of the request using the key `Authorization`. The AWS API Gateway will validate the token and forward the request to the API if the token is valid.
+To access protected resources, you need to send the `access_token` as a Bearer token in the header of the request using the key `Authorization`. The invoked service will then use the token to get the user's information from AWS Cognito and check if he is authorized to access the resource.

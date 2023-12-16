@@ -10,7 +10,7 @@ sidebar_position: 2
 
 ### End-user
 
-NoteAlly is composed of two main and independent services, a user-friendly Web UI (frontend) built with Svelte, and a RESTful API to provide data and services to the Web UI.
+NoteAlly is composed of several microservices that work together to provide a seamless experience to the end-user. The end-user will interact with the NoteAlly platform through a Web UI (frontend) built with Svelte. The frontend will communicate with an API Gateway, which will be responsible for routing the requests to the appropriate microservices. The API Gateway will communicate with the microservices through a VPC Link, which will allow the API Gateway to access the resources inside the VPC. The microservices will be responsible for handling the requests, and for communicating with the database to retrieve and store the data.
 
 ### Admin
 

@@ -5,19 +5,19 @@
 All users can download the materials published by other users. To download a material, you need to send a `GET` request to the endpoint
 
 ```http
-GET /downloads/{id}
+GET /materials/downloads/{id}
 ```
 
 where `{id}` is the id of the material you want to download.
 
 However, in order to determine if this user can have access to this material, the system needs to know the user's id. This is done by sending the user's id in the header of the request using the key `User-id`.
 
-After the request is sent, the system will respond with the information necessary to download the material.
+After the request is sent, the system will respond with the information necessary to download the material. The provided link will be valid for 1 minute, after which it will expire.
 
 ```json
 {
     "name": "my_notes.pdf",
-    "link": ".../19fe32a9-93b0-403f-a5cf-360ded4857f3.pdf"
+    "link": "https://.../19fe32a9-93b0-403f-a5cf-360ded4857f3.pdf"
 }
 ```
 
@@ -34,7 +34,7 @@ The original file name is sent in the response so that the user can download the
 To list all the downloads of a user, you need to send a `GET` request to the endpoint
 
 ```http
-GET /downloads
+GET /materials/downloads
 ```
 
 Similar to the previous endpoint, the user's id needs to be sent in the header of the request using the key `User-id`.

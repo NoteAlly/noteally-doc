@@ -148,7 +148,7 @@ If the tutor does not exist.
 To subscribe to a tutor, you need to send a `POST` request to the endpoint
 
 ```http
-POST /subscribe/<int:to_sub_user_id>
+POST /users/subscribe/<int:to_sub_user_id>
 ```
 
 The request needs to contain the following headers:
@@ -199,7 +199,7 @@ Whenever a user follows another, the user will start receiving notifications on 
 To unsubscribe to a tutor, you need to send a `POST` request to the endpoint
 
 ```http
-POST /subscribe/<int:to_unsub_user_id>
+POST /users/subscribe/<int:to_unsub_user_id>
 ```
 
 The request needs to contain the following headers:
@@ -237,7 +237,7 @@ If the request is not successful, there will be an error message with status cod
 To simply list all tutors subscription, you just need to send a `GET` request to the endpoint:
 
 ```http
-GET /get_subscriptions
+GET /users/get_subscriptions
 ```
 The request needs to contain the following headers:
 
