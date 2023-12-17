@@ -4,7 +4,6 @@ Tutors are users that post content.
 
 The endpoint `/tutors` is used to list tutors, using the HTTP method `GET`.
 
-
 ## List Tutors
 
 To simply list all available tutors, you just need to send a `GET` request to the endpoint `/tutors` as illustrated below:
@@ -60,7 +59,6 @@ The first six attributes are related to pagination, and their meaning is as foll
 - `total_elements`: the total number of tutors in the database;
 - `this_page_elements`: the number of tutors in the current page.
 
-
 :::tip Note
 
 By default the API returns 10 tutors per page. If you want to change this, you can do so by using the `page_size` query parameter. For example, if you want to list 20 tutors per page, you can do so by sending a `GET` request to the endpoint `/tutors?page_size=20`.
@@ -77,8 +75,8 @@ If you desire to filter the tutors, you can do so by using the following query p
 | -------- | ------- |
 | `name`  | Filter for tutors that contain `name` in their name. |
 | `author` | Filter for tutors that were uploaded by `author`. |
-| `study_area` | Filter for tutors that belong to the study area with `study_area` as its ID. | 
-| `karma_score` | Filter for tutors that have at least `min_likes` likes. | 
+| `study_area` | Filter for tutors that belong to the study area with `study_area` as its ID. |
+| `karma_score` | Filter for tutors that have at least `min_likes` likes. |
 
 Here is an example of a request that filters for tutors that belong to the study area with ID 1 and that have at least 10 likes:
 
@@ -93,7 +91,7 @@ If you desire to order the tutors, you can do so by using the `order_by` query p
 - `name`: orders the tutors by name;
 - `-name`: orders the tutors by name in reverse order;
 - `karma_score`: orders the tutors by price from lowest to highest;
-- `-karma_score`: orders the tutors by price from highest to lowest; 
+- `-karma_score`: orders the tutors by price from highest to lowest;
 
 For instance, if you want to order the tutors by price from highest to lowest, you can do the following:
 
@@ -142,7 +140,6 @@ If the tutor was not found, the response will be:
 
 If the tutor does not exist.
 
-
 ## Subscribe
 
 To subscribe to a tutor, you need to send a `POST` request to the endpoint
@@ -179,20 +176,19 @@ If the request is not successful, there will be an error message with status cod
 {
     "error": "Already following this user"
 }
-``` 
+```
 
 ### Notifications
 
-Whenever a user follows another, the user will start receiving notifications on any resource published by the user to follow. This is possible with the use of Amazon SNS. 
+Whenever a user follows another, the user will start receiving notifications on any resource published by the user to follow. This is possible with the use of Amazon SNS.
 
-#### Each user is associated with a topic created dynamically using the boto3 client 
+#### Each user is associated with a topic created dynamically using the boto3 client
 
-![](/website/notifications/topics.png)
+![Topics](/website/notifications/topics.png)
 
 #### Whenever the user to follow publishes a resource, the subscriber to its topic will receive a notification
 
-![](/website/notifications/notification.png)
-
+![Notification](/website/notifications/notification.png)
 
 ## Unsubscribe
 
@@ -230,7 +226,7 @@ If the request is not successful, there will be an error message with status cod
 {
     "error": "Not currently subscribed to this user"
 }
-``` 
+```
 
 ## List Subscription
 
@@ -239,6 +235,7 @@ To simply list all tutors subscription, you just need to send a `GET` request to
 ```http
 GET /users/get_subscriptions
 ```
+
 The request needs to contain the following headers:
 
 ```json
@@ -282,4 +279,3 @@ Your response will look like something similar to this:
     ]
 }
 ```
- 

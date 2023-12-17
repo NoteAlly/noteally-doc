@@ -1,5 +1,9 @@
 # Docker
 
+Our API is deployed using Docker. For instantiating the API we use several docker images, for each service, that are built and pushed to our ECR repository when a new commit is pushed to the `main` branch. The images are then pulled from the repository and instantiated in the ECS cluster.
+
+The following documentation is a guide on how to run the API locally using the Docker images that are published in our GitHub repository, which are also created each time a commit is pushed to the `main` branch. We will explain how to run the image of the Info Service, but the same steps can be followed for the other services to have the full API running locally.
+
 ## Installing Docker
 
 To follow the instructions in this document, you need to have Docker installed on your machine. To install Docker, follow the instructions in the [official documentation](https://docs.docker.com/get-docker/).
@@ -24,22 +28,22 @@ There are two ways of getting the image:
 1. Pulling the image from the repository:
 
     ```bash
-    docker pull ghcr.io/noteally/noteally-backend:main
+    docker pull ghcr.io/noteally/noteally-backend/info-service:main
     ```
 
 2. Getting the Dockerfile from the repository and building the image from it:
 
 ```bash
-wget https://raw.githubusercontent.com/NoteAlly/noteally-backend/main/Dockerfile
-docker build -t noteally-backend .
+wget https://raw.githubusercontent.com/NoteAlly/noteally-backend/main/info-service/Dockerfile
+docker build -t info-service .
 ```
 
 After building or pulling the image, it should look something like this:
 
 ```bash
 $ docker images
-REPOSITORY                                TAG       IMAGE ID       CREATED         SIZE
-ghcr.io/noteally/noteally-backend         main      6e4c28970ef6   19 hours ago   1.11GB
+REPOSITORY                                              TAG       IMAGE ID       CREATED         SIZE
+ghcr.io/noteally/noteally-backend/info-service          main      6e4c28970ef6   19 hours ago   1.11GB
 ```
 
 **Note:** The image name (*REPOSITORY*) might be different depending on the strategy used.
@@ -59,6 +63,7 @@ To run the image, you need to use the command `docker run` and pass the environm
                                 -e DJANGO_KEY=<DJANGO_KEY> \
                                 -e AWS_ACCESS_KEY_ID=<AWS_ACCESS_KEY_ID> \
                                 -e AWS_SECRET_ACCESS_KEY=<AWS_SECRET_ACCESS_KEY> \
+                                -e AWS_ACCOUNT_ID=<AWS_ACCOUNT_ID>
                                 -e AWS_REGION_NAME=<AWS_REGION_NAME> \
                                 -e AWS_S3_BUCKET_NAME=<AWS_S3_BUCKET_NAME> \
                                 -e AWS_COGNITO_DOMAIN=<AWS_COGNITO_DOMAIN> \
@@ -67,7 +72,7 @@ To run the image, you need to use the command `docker run` and pass the environm
                                 -e DB_PASSWORD=<DB_PASSWORD> \
                                 -e DB_PORT=<DB_PORT> \
                                 -e DB_HOST=<DB_HOST> \
-                                ghcr.io/noteally/noteally-backend:main
+                                ghcr.io/noteally/noteally-backend/info-service:main
     ```
 
     **Note:** Replace the environment variables (*values between `<` and `>`*) with the values you want to use.
@@ -75,7 +80,7 @@ To run the image, you need to use the command `docker run` and pass the environm
 2. Using a `.env` file:
 
 ```bash
-docker run -d -p 8000:8000 --name noteally-backend_app --env-file .env ghcr.io/noteally/noteally-backend:main
+docker run -d -p 8000:8000 --name info-service_app --env-file .env ghcr.io/noteally/noteally-backend/info-service:main
 ```
 
 The environment variables needed are the ones described in the [1st option](#running-the-docker-image).
@@ -84,8 +89,8 @@ After running the image, you should be able to see it running:
 
 ```bash
 $ docker ps
-CONTAINER ID   IMAGE                                    COMMAND                  CREATED          STATUS          PORTS                     NAMES
-1a2b3c4d5e6f   ghcr.io/noteally/noteally-backend:main   "/bin/sh -c 'echo \"D…"  2 minutes ago    Up 2 minutes    0.0.0.0:8000->8000/tcp    noteally-backend_app
+CONTAINER ID   IMAGE                                                    COMMAND                  CREATED          STATUS          PORTS                     NAMES
+1a2b3c4d5e6f   ghcr.io/noteally/noteally-backend/info-service:main      "/bin/sh -c 'echo \"D…"  2 minutes ago    Up 2 minutes    0.0.0.0:8000->8000/tcp    info-service_app
 ```
 
 or if using docker desktop:
@@ -101,7 +106,7 @@ If everything went well, you should be able to access the API at `http://localho
 To stop the container, you need to use the command `docker stop` and pass the container name or id as argument as follows:
 
 ```bash
-docker stop noteally-backend_app
+docker stop info-service_app
 ```
 
 ### Removing the Container
@@ -109,7 +114,7 @@ docker stop noteally-backend_app
 To remove the container, you need to use the command `docker rm` and pass the container name or id as argument as follows:
 
 ```bash
-docker rm noteally-backend_app
+docker rm info-service_app
 ```
 
 ### Removing the Image
@@ -117,7 +122,7 @@ docker rm noteally-backend_app
 To remove the image, you need to use the command `docker rmi` and pass the image name or id as argument as follows:
 
 ```bash
-docker rmi ghcr.io/noteally/noteally-backend:main
+docker rmi ghcr.io/noteally/noteally-backend/info-service:main
 ```
 
 ## Running the Docker Image with development settings
@@ -126,7 +131,7 @@ The previous image is built with production settings.
 If you want to run the image with development settings, you need clone the repository and change the Dockerfile to use the development settings file instead of the production settings file by changing the CMD line to use --settings=NoteAlly.development_settings instead of --settings=NoteAlly.production_settings and then build the image using the following command:
 
 ```bash
-docker build -t noteally-backend .
+docker build -t info-service .
 ```
 
 After building the image, you can run it using the same commands as before.

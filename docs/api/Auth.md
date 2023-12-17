@@ -4,7 +4,6 @@ In order to use most of the resources provided by the API, you need to be authen
 
 To facilitate and simplify the authentication process, the API is secured using AWS Cognito. This means that the API does not store any user credentials, and the authentication is entirely handled by AWS.
 
-
 ## Login and Register
 
 To login or register, you just need to send a `POST` request to the following endpoint.
@@ -44,13 +43,11 @@ After a successful login or registration, the API will return a `200` status cod
 }
 ```
 
-
 :::tip Note
 
 This information is useful to use as session data in the frontend.
 
 :::
-
 
 ## Accessing private resources
 

@@ -11,12 +11,12 @@ NoteAlly is a web-based platform designed to cater to the needs of university st
 - Organized university resources with tags
 - Option to monetize resources and tutoring services
 - User ranking system with ‘Karma’ Score
-- Resources filterting 
+- Resources filterting
 - Premium features like increased resources ad omission
 
 ## Non-Functional Requirements
 
-- Availability: The system should be available most of the time. 
+- Availability: The system should be available most of the time.
 - Security: The system should encrypt all communication and implement a role-based access control mechanism to restrict access to sensitive data.
 - Maintainability: The system should be modular and follow the SOLID principles to facilitate future changes. The code should be well-documented, and the system should have automated tests to ensure its correctness.
 - Usability: The system should have an intuitive user interface to provide a good user experience.

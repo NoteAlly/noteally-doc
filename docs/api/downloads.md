@@ -21,13 +21,11 @@ After the request is sent, the system will respond with the information necessar
 }
 ```
 
-
 :::tip Note
 
 The original file name is sent in the response so that the user can download the file with the same name as the original.
 
 :::
-
 
 ## List of downloads
 

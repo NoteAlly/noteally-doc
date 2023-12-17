@@ -4,7 +4,6 @@ A material is a resource that users can upload and share with each other. A mate
 
 The endpoint `/materials` is used to create, list, and delete materials, using the HTTP methods `POST`, `GET`, and `DELETE` respectively.
 
-
 ## Create a material
 
 To create a material, you need to send a `POST` request to the endpoint `/materials` with the following body, as exampled below:
@@ -44,7 +43,6 @@ If the material was successfully created, or like this:
 ```
 
 If the material was not successfully created.
-
 
 ## List materials
 
@@ -119,7 +117,6 @@ The first six attributes are related to pagination, and their meaning is as foll
 - `total_pages`: the total number of pages;
 - `total_elements`: the total number of materials in the database;
 - `this_page_elements`: the number of materials in the current page.
-
 
 :::tip Note
 
