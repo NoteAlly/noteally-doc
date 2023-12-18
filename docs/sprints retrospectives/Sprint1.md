@@ -14,7 +14,7 @@
 
 - **What went well:**
     - Met all sprint goals.
-    - Team did well when jumpstarting the project. 
+    - Good project jumpstart. 
 
 - **What could have been better:**
     - Daily scrum meetings planning. 
