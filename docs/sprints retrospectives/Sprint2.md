@@ -7,6 +7,7 @@
 ### Sprint goals  
 
 - Authentication
+- User profile management
 
 ### Sprint retrospective
 

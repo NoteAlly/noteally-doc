@@ -6,8 +6,8 @@
 
 ### Sprint goals  
 
-- Allowing users to upload resources
-- Resources AWS storing 
+- Users are able to upload resources
+- Storing resources in AWS 
 - CI/CD pipeline setup
 
 ### Sprint retrospective

@@ -10,6 +10,7 @@
 - Finish website Monitoring and logging 
 - Deployed frontend 
 - Acceptance criteria testing
+- Notifications implementation
 
 ### Sprint retrospective
 
