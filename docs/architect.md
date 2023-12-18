@@ -8,13 +8,20 @@ sidebar_position: 2
 
 ## Microservices Architecture
 
-### End-user
+### Services
 
-NoteAlly is composed of two main and independent services, a user-friendly Web UI (frontend) built with Svelte, and a RESTful API to provide data and services to the Web UI.
+Our solution is composed of 5 microservices, each focused on a specific domain of the application. This allows us to have a more modular and scalable architecture, where each service can be updated without affecting the existing ones. Moreover, if a service fails, the other services will not be affected.
 
-### Admin
+These services are:
 
-For the admin, there are two main services. The first services is metrics monitoring, the observability and monitoring metrics will be provided by Prometheus and Grafana will be used to visualize this metrics. For logs monitoring, we will use Elasticsearch for logging and kibana as a visual tool for these logs.
+- Authentication service (auth-service)
+- User service (user-service)
+- Tutor service (tutor-service)
+- Material service (material-service)
+- Information service (info-service)
+
+![Architecture](/img/microservices.png)
+
 
 ### AWS Integration
 
@@ -90,11 +97,11 @@ Route tables are used to define the routes for the subnets. They are used to def
 
 ### Network Load Balancer
 
-Network Load Balancer is used to distribute the load between the instances of the API. It is used to make sure that the API is always available, and to make sure that the API can handle the load.
+Network Load Balancer is used to distribute the end-user requests to the different services. In addition, the VPC Link requires a Network Load Balancer to be used, or an Application Load Balancer.
 
 ### VPC Link
 
-VPC Link is used to connect the API Gateway to the VPC. It is used to allow the API Gateway to access the resources inside the VPC and to define that the vpc is only accessible it.
+VPC Link is used to connect the API Gateway to the VPC. It is used to allow the API Gateway to access the resources managed by the services inside the VPC, more specifically the services inside the private subnet.
 
 ### Security Groups
 
@@ -102,12 +109,25 @@ Security groups are used to define the inbound and outbound rules for the resour
 
 ## CloudWatch
 
-CloudWatch is used to monitor the resources. It is used to monitor the CPU usage, memory usage, disk usage, network usage, and other metrics. It is also used to monitor the logs, and to monitor the health of the resources.
+CloudWatch is used to monitor the resources. It is used to monitor the CPU, memory, disk, network usage, and other metrics of the ECS Cluster. It is also used to store the logs produced by each service, and also monitor other AWS services, such as the API Gateway, Amplify, and others.
+
+### Metrics
+
+![Architecture](/img/cloudwatch_monitoring.png)
+
+### Log Streams for each service
+
+![Architecture](/img/cloudwatch_logs_strems.png)
+
+### Logs of a specific service
+
+![Architecture](/img/cloudwatch_logs_service.png)
+
 
 ## Amplify
 
-Amplify is used to deploy and host the web application, it has features like auth and storage, connect to real-time data sources, deploy, and scale to millions of users. Play Video. Play.It is highly scalable and can be used to deploy the web application to multiple regions.
+Amplify is used to deploy and host the web application, it has features like auth and storage, connect to real-time data sources, deploy, and scale to millions of users. Play Video. Play. It is highly scalable and can be used to deploy the web application to multiple regions.
 
 ## SNS
 
-Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication. It is used to send notifications to the users, and to send notifications to the administrators using a publish/subscribe model.
+Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service for both application-to-application (A2A) and application-to-person (A2P) communication. It is used to send notifications to the users and to send notifications to the administrators using a publish/subscribe model.
