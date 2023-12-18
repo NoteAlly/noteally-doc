@@ -1,5 +1,15 @@
 # Sprint 2
 
+**Date - October 26th, 2023 - November 5th, 2023**
+
+### Story Points : 40
+
+### Sprint goals  
+
+- Authentication
+
+### Sprint retrospective
+
 - **What went well:**
     - Development of the story points proposed. 
 

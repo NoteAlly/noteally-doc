@@ -1,5 +1,17 @@
 # Sprint 1
 
+**Date - October 9th, 2023 - October 23rd, 2023**
+
+### Story Points : 46
+
+### Sprint goals  
+
+- Allowing users to upload resources
+- Resources AWS storing 
+- CI/CD pipeline setup
+
+### Sprint retrospective
+
 - **What went well:**
     - Met all sprint goals.
     - Team did well when jumpstarting the project. 
