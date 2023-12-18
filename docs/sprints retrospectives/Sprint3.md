@@ -2,12 +2,13 @@
 
 **Date - November 6th, 2023 - November 20th, 2023**
 
-### Story Points : 27
+#### Story Points : 27
 
 ### Sprint goals  
 
 - Finishing core features 
-- Tutors and user ranking 
+- Tutoring services and filters
+- User ranking - **Karma Score**
 - Infrastructure as code
 
 ### Sprint retrospective

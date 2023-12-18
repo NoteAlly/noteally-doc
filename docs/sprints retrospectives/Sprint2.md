@@ -2,7 +2,7 @@
 
 **Date - October 26th, 2023 - November 5th, 2023**
 
-### Story Points : 40
+#### Story Points : 40
 
 ### Sprint goals  
 

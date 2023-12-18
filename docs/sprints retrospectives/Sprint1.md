@@ -2,11 +2,12 @@
 
 **Date - October 9th, 2023 - October 23rd, 2023**
 
-### Story Points : 46
+#### Story Points : 46
 
 ### Sprint goals  
 
 - Users are able to upload resources
+- Resources filtering 
 - Storing resources in AWS 
 - CI/CD pipeline setup
 
